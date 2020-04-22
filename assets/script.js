@@ -4,7 +4,7 @@ const barThree = document.getElementById("bar3")
 const barFour = document.getElementById("bar4")
 const barFive = document.getElementById("bar5")
 
-let synth = new Tone.Synth().toDestination()
+let synth = new Tone.PolySynth().toDestination()
 
 
 
@@ -27,7 +27,7 @@ barTwo.addEventListener("click", function(){
 function melodyOne() {
     Tone.start()
     Tone.Transport.start();
-    const loop = new Tone.Loop(function(time) {
+    const loopOne = new Tone.Loop(function(time) {
         //triggered every eighth note.
         console.log(time);
         synth.triggerAttackRelease('C4', '4n', time)
@@ -44,7 +44,7 @@ function melodyOne() {
 function melodyTwo() {
     Tone.start()
     Tone.Transport.start();
-    const loop = new Tone.Loop(function(time) {
+    const loopTwo = new Tone.Loop(function(time) {
         //triggered every eighth note.
         console.log(time);
         synth.triggerAttackRelease('C5', '4n', time)
