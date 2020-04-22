@@ -24,6 +24,10 @@ barTwo.addEventListener("click", function(){
     melodyTwo()
 })
 
+barThree.addEventListener("click", function(){
+    Tone.Transport.stop()
+})
+
 function melodyOne() {
     Tone.start()
     Tone.Transport.start();
@@ -47,14 +51,14 @@ function melodyTwo() {
     const loopTwo = new Tone.Loop(function(time) {
         //triggered every eighth note.
         console.log(time);
-        synth.triggerAttackRelease('C5', '4n', time)
-        synth.triggerAttackRelease('A4', '4n', (time + 0.5))
-        synth.triggerAttackRelease('G4', '4n', (time + 1))
-        synth.triggerAttackRelease('A4', Tone.Time('4n'), (time + 1.5))
+        synth.triggerAttackRelease('C6', '4n', time)
+        synth.triggerAttackRelease('A5', '4n', (time + 0.5))
+        synth.triggerAttackRelease('G5', '4n', (time + 1))
+        synth.triggerAttackRelease('A5', Tone.Time('4n'), (time + 1.5))
         // // rest
-        synth.triggerAttackRelease('D5', '4n', (time + 2.5))
+        synth.triggerAttackRelease('D6', '4n', (time + 2.5))
         // // rest
-        synth.triggerAttackRelease('E5', '4n', (time + 3.5))
+        synth.triggerAttackRelease('E6', '4n', (time + 3.5))
       }, 4).start(0);
 }
 
