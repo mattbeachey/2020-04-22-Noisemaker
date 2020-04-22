@@ -4,7 +4,7 @@ const barThree = document.getElementById("bar3")
 const barFour = document.getElementById("bar4")
 const barFive = document.getElementById("bar5")
 
-let synth = new Tone.Synth().toMaster()
+let synth = new Tone.Synth().toDestination()
 
 
 
@@ -12,21 +12,37 @@ let synth = new Tone.Synth().toMaster()
 //     synth.triggerAttackRelease('C4', 2, 0)   
 // })
 
+const loop = new Tone.Loop(function(time) {
+    //triggered every eighth note.
+    console.log(time);
+    synth.triggerAttackRelease("C2", "2n");
+    synth.triggerAttackRelease("D2", "2n", "2n");
+  }, "2n").start(0);
+
+
+
 barOne.addEventListener("click", function(){
-    setInterval(()=>{
-        melodyOne();
-    }, 4);
+    Tone.start()
+    Tone.Transport.start();
+    // melodyOne()
+
+
 })
 
-function melodyOne(){
-    synth.triggerAttackRelease('C4', '4n', 0)  
-    synth.triggerAttackRelease('G4', '4n', 0.5)  
-    // //rest
-    synth.triggerAttackRelease('D4', Tone.Time('4n'), 1.5) 
-    // rest
-    synth.triggerAttackRelease('A4', '4n', 2.5)  
-    // rest
-    // rest
+function melodyOne() {
+    var loop = new Tone.Loop(function(time){
+        //triggered every eighth note. 
+        console.log(time);
+        synth.triggerAttackRelease('C4', '4n', '4n')
+        // synth.triggerAttackRelease('G4', '4n', (time + 0.5))
+        // // //rest
+        // synth.triggerAttackRelease('D4', Tone.Time('4n'), (time + 1.5))
+        // // rest
+        // synth.triggerAttackRelease('A4', '4n', (time + 2.5))
+        // // rest
+        // // rest
+    }, "8n").start(0);
+
 }
 
 // synth.triggerAttackRelease('C4', '4n', '8n')
